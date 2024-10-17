@@ -1,0 +1,11 @@
+{
+  "name": "nodejs-course-crud-api",
+  "version": "1.0.0",
+  "description": "this application is a part of rs school nodejs course",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "https://github.com/nuriver"
+}
