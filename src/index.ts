@@ -1,7 +1,6 @@
 import http from 'http';
 import hasBaseUrl from './utils/hasBaseUrl';
-import requestHandlers from './controllers/handleGetRequest';
-import sendErrorResponse from './controllers/sendErrorResponse';
+import requestHandlers from './controllers/requestHandlers';
 
 // TODO: delete in config false for unused locals and args
 
@@ -13,11 +12,15 @@ const server = http.createServer((req, res) => {
   const reqUrl = req.url;
 
   if (!METHODS.includes(method)) {
-    sendErrorResponse(res, 405, method);
+    res.setHeader('Content-Type', 'application/json');
+    res.statusCode = 405;
+    res.end(JSON.stringify({ message: `Method ${method} not allowed` }));
   }
 
   if (!hasBaseUrl(reqUrl)) {
-    sendErrorResponse(res, 404);
+    res.setHeader('Content-Type', 'application/json');
+    res.statusCode = 404;
+    res.end(JSON.stringify({ message: 'Resource not found' }));
   }
 
   if (reqUrl) {
