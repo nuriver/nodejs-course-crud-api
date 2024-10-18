@@ -1,6 +1,6 @@
 import http from 'http';
 import hasBaseUrl from './utils/hasBaseUrl';
-import requestHandlers from './controllers/requestHandlers';
+import requestHandlers from './controllers';
 
 // TODO: delete in config false for unused locals and args
 
