@@ -15,3 +15,7 @@ export const getUser = (id: string) => {
 
   return null;
 };
+
+export const addUser = (user: User) => {
+  users.push(user);
+};

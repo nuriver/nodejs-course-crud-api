@@ -1,6 +1,6 @@
 import { IncomingMessage, ServerResponse } from 'http';
-import { BASE_URL } from '..';
 import handleGetRequest from './handleGetRequest';
+import handlePostRequest from './handlePostRequest';
 
 const requestHandlers = (
   req: IncomingMessage,
@@ -10,6 +10,12 @@ const requestHandlers = (
 ) => {
   if (method === 'GET') {
     handleGetRequest(res, reqUrl);
+    return;
+  }
+
+  if (method === 'POST') {
+    handlePostRequest(req, res);
+    return;
   }
 };
 

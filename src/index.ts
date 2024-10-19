@@ -15,16 +15,19 @@ const server = http.createServer((req, res) => {
     res.setHeader('Content-Type', 'application/json');
     res.statusCode = 405;
     res.end(JSON.stringify({ message: `Method ${method} not allowed` }));
+    return;
   }
 
   if (!hasBaseUrl(reqUrl)) {
     res.setHeader('Content-Type', 'application/json');
     res.statusCode = 404;
     res.end(JSON.stringify({ message: 'Resource not found' }));
+    return;
   }
 
   if (reqUrl) {
     requestHandlers(req, res, method, reqUrl);
+    return;
   }
 
   res.end();
