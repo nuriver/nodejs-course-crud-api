@@ -8,29 +8,27 @@ const handleGetRequest = (res: ServerResponse, reqUrl: string) => {
   const users = getUsers();
   const user = getUser(idParams);
 
-  res.setHeader('Content-Type', 'application/json');
-
   if (!idParams) {
-    res.statusCode = 200;
+    res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify(users));
     return;
   }
 
   if (!isValidUUID(idParams)) {
-    res.statusCode = 400;
+    res.writeHead(400, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ message: 'Invalid user id' }));
     return;
   }
 
   if (!user) {
-    res.statusCode = 404;
+    res.writeHead(404, { 'Content-Type': 'application/json' });
     res.end(
       JSON.stringify({ message: `User with id ${idParams} doesn't exist` })
     );
     return;
   }
 
-  res.statusCode = 200;
+  res.writeHead(200, { 'Content-Type': 'application/json' });
   res.end(JSON.stringify({ user }));
   return;
 };
