@@ -27,3 +27,8 @@ export const updateUser = (updatedUser: User): void => {
   filteredUsers.push(updatedUser);
   users = [...filteredUsers];
 };
+
+export const deleteUser = (userToDelete: User): void => {
+  const filteredUsers = users.filter((user) => user.id !== userToDelete.id);
+  users = [...filteredUsers];
+};
