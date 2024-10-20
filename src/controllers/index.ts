@@ -1,6 +1,7 @@
 import { IncomingMessage, ServerResponse } from 'http';
 import handleGetRequest from './handleGetRequest';
 import handlePostRequest from './handlePostRequest';
+import handlePutRequest from './handlePutRequest';
 
 const requestHandlers = (
   req: IncomingMessage,
@@ -16,6 +17,10 @@ const requestHandlers = (
   if (method === 'POST') {
     handlePostRequest(req, res);
     return;
+  }
+
+  if (method === 'PUT') {
+    handlePutRequest(req, res, reqUrl);
   }
 };
 

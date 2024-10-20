@@ -1,21 +1,29 @@
 import { User } from '../types/types';
 
-const users: User[] = [];
+let users: User[] = [];
 
-export const getUsers = () => {
+export const getUsers = (): User[] => {
   return users;
 };
 
-export const getUser = (id: string) => {
+export const getUser = (id: string): User | null => {
+  let userToFind: User | null = null;
+
   users.forEach((user) => {
     if (user.id === id) {
-      return user;
+      userToFind = user;
     }
   });
 
-  return null;
+  return userToFind;
 };
 
-export const addUser = (user: User) => {
+export const addUser = (user: User): void => {
   users.push(user);
+};
+
+export const updateUser = (updatedUser: User): void => {
+  const filteredUsers = users.filter((user) => user.id !== updatedUser.id);
+  filteredUsers.push(updatedUser);
+  users = [...filteredUsers];
 };

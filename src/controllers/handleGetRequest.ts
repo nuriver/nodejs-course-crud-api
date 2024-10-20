@@ -7,6 +7,7 @@ const handleGetRequest = (res: ServerResponse, reqUrl: string) => {
   const idParams = reqUrl.substring(BASE_URL.length + 1);
   const users = getUsers();
   const user = getUser(idParams);
+  console.log(idParams);
 
   if (!idParams) {
     res.writeHead(200, { 'Content-Type': 'application/json' });
