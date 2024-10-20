@@ -23,20 +23,29 @@ const handleDeleteRequest = (res: ServerResponse, reqUrl: string) => {
     return;
   }
 
-  const user: User | null = getUser(idParams);
+  try {
+    const user: User | null = getUser(idParams);
 
-  if (!user) {
-    res.writeHead(404, { 'Content-Type': 'application/json' });
-    res.end(
-      JSON.stringify({ message: `User with id ${idParams} doesn't exist` })
-    );
+    if (!user) {
+      res.writeHead(404, { 'Content-Type': 'application/json' });
+      res.end(
+        JSON.stringify({ message: `User with id ${idParams} doesn't exist` })
+      );
+      return;
+    }
+
+    deleteUser(user);
+    res.writeHead(204, { 'Content-Type': 'application/json' });
+    res.end();
     return;
+  } catch {
+    res.writeHead(500, { 'Content-Type': 'application/json' });
+    res.end(
+      JSON.stringify({
+        message: 'Internal Server Error. Please try again later.',
+      })
+    );
   }
-
-  deleteUser(user);
-  res.writeHead(204, { 'Content-Type': 'application/json' });
-  res.end();
-  return;
 };
 
 export default handleDeleteRequest;

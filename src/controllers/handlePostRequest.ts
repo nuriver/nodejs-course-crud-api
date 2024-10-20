@@ -18,18 +18,25 @@ const handlePostRequest = (req: IncomingMessage, res: ServerResponse) => {
         if (!isValidUserData(bufferData)) {
           throw new Error('Not valid user data');
         }
+        try {
+          const userId = uuidv4();
+          const user = {
+            ...requestBody,
+            id: userId,
+          };
 
-        const userId = uuidv4();
-        const user = {
-          ...requestBody,
-          id: userId,
-        };
-
-        addUser(user);
-        res.writeHead(201, { 'Content-Type': 'application/json' });
-        res.statusCode = 201;
-        res.end(JSON.stringify(user));
-        return;
+          addUser(user);
+          res.writeHead(201, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify(user));
+          return;
+        } catch {
+          res.writeHead(500, { 'Content-Type': 'application/json' });
+          res.end(
+            JSON.stringify({
+              message: 'Internal Server Error. Please try again later.',
+            })
+          );
+        }
       } catch {
         res.writeHead(400, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ message: 'Invalid user data' }));

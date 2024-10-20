@@ -51,17 +51,24 @@ const handlePutRequest = (
         if (!isValidUserData(bufferData)) {
           throw new Error('Not valid user data');
         }
+        try {
+          const updatedUser = {
+            ...requestBody,
+            id: user.id,
+          };
+          updateUser(updatedUser);
 
-        const updatedUser = {
-          ...requestBody,
-          id: user.id,
-        };
-        updateUser(updatedUser);
-
-        res.writeHead(200, { 'Content-Type': 'application/json' });
-        res.statusCode = 201;
-        res.end(JSON.stringify(updatedUser));
-        return;
+          res.writeHead(200, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify(updatedUser));
+          return;
+        } catch {
+          res.writeHead(500, { 'Content-Type': 'application/json' });
+          res.end(
+            JSON.stringify({
+              message: 'Internal Server Error. Please try again later.',
+            })
+          );
+        }
       } catch {
         res.writeHead(400, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ message: 'Invalid user data' }));
