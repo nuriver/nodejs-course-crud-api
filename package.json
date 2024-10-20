@@ -29,6 +29,7 @@
   "keywords": [],
   "author": "https://github.com/nuriver",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "uuid": "^10.0.0"
   }
 }
