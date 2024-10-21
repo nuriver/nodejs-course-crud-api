@@ -1,0 +1,36 @@
+{
+  "name": "nodejs-course-crud-api",
+  "version": "1.0.0",
+  "description": "this application is a part of rs school nodejs course",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "nodemon ./src/index.ts",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "start:prod": "tsc && node dist/index.js"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.22.5",
+    "@babel/preset-typescript": "^7.22.5",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^22.5.4",
+    "@types/uuid": "^10.0.0",
+    "@typescript-eslint/eslint-plugin": "^7.13.1",
+    "@typescript-eslint/parser": "^7.13.1",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.7",
+    "prettier": "^2.8.8",
+    "ts-jest": "^29.1.0",
+    "ts-loader": "^9.4.3",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.5.2"
+  },
+  "keywords": [],
+  "author": "https://github.com/nuriver",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "uuid": "^10.0.0"
+  }
+}
