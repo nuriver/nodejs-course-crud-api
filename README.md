@@ -1,5 +1,6 @@
 # nodejs-course-crud-api
 This repository contains a Node.js application implementing a basic CRUD (Create, Read, Update, Delete) API for managing users.
+
 **Features:**
 - **CRUD Operations and endpoints:**
     - **GET /api/users:** Retrieves all users.
@@ -16,7 +17,7 @@ This repository contains a Node.js application implementing a basic CRUD (Create
 **Installation:**
 1. Clone this repository:
    ```
-   git clone [https://github.com/nuriver/nodejs-course-crud-api.git](https://github.com/nuriver/nodejs-course-crud-api.git)
+   git clone https://github.com/nuriver/nodejs-course-crud-api.git
 2. Navigate to the project directory:
    ```
    cd nodejs-course-crud-api
