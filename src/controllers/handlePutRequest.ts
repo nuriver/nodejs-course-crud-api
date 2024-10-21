@@ -53,7 +53,9 @@ const handlePutRequest = (
         }
         try {
           const updatedUser = {
-            ...requestBody,
+            userName: requestBody.userName,
+            age: requestBody.age,
+            hobbies: requestBody.hobbies,
             id: user.id,
           };
           updateUser(updatedUser);

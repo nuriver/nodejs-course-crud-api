@@ -21,7 +21,9 @@ const handlePostRequest = (req: IncomingMessage, res: ServerResponse) => {
         try {
           const userId = uuidv4();
           const user = {
-            ...requestBody,
+            userName: requestBody.userName,
+            age: requestBody.age,
+            hobbies: requestBody.hobbies,
             id: userId,
           };
 
