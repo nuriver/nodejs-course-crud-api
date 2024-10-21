@@ -3,8 +3,6 @@ import hasBaseUrl from './utils/hasBaseUrl';
 import requestHandlers from './controllers';
 import 'dotenv/config';
 
-// TODO: delete in config false for unused locals and args
-
 export const BASE_URL = '/api/users';
 const PORT = process.env.PORT || 3000;
 
